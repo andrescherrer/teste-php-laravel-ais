@@ -26,16 +26,22 @@ Crítica das Migrations e Seeders: Aponte problemas, se houver, e solucione; Imp
 
 Migrations:
 
-- Removi os registros da tabela `migrations` referentes às migrations de criação da `categories` e `documents`
-- Comando SQL: `DELETE from migrations where id in (5,6);`;
+- Removi os registros da tabela `migrations` referentes às migrations de criação da `categories` e `documents`;
+- Comando SQL: 
+
+```DELETE from migrations where id in (5,6);```
+
 - Removi as tabelas `documents` e `categories` nesta ordem;
-- Comando SQL remoção `documents`: `DROP  table documents;`;
-- Comando SQL remoção `categories`: `DROP  table categories;`;
+- Comando SQL remoção `documents`:
+
+```DROP  table documents;```
+
+- Comando SQL remoção `categories`: 
+
+```DROP  table categories;```
+
 
 Schema:
 
 - Percebi que os nomes das migrations tanto `categories` quanto `documents` estavam diferentes das migrations existentes no projeto;
-- Alterei o script `sqlite-schema.sql` para inserir o nome correto da migration da tabela `categories` `2023_03_28_172350_create_categories_table`;
-- Alterei o script `sqlite-schema.sql` para inserir o nome correto da migration da tabela `documents` `2023_03_28_172401_create_documents_table`;
-
-
+- Alterei o script `sqlite-schema.sql` para inserir os nomes corretos das migrations das tabelas `categories` e `documents` com os valores: `2023_03_28_172350_create_categories_table` e `2023_03_28_172401_create_documents_table` respectivamente;
