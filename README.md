@@ -30,20 +30,42 @@ Migrations:
 
 Comando SQL: 
 
-```DELETE from migrations where id in (5,6);```
+```
+DELETE from migrations where id in (5,6);
+```
 
 - Removi as tabelas `documents` e `categories` nesta ordem;
 
 Comando SQL remoção `documents`:
-
-```DROP  table documents;```
+```
+DROP  table documents;
+```
 
 Comando SQL remoção `categories`: 
 
-```DROP  table categories;```
-
+```
+DROP  table categories;
+```
 
 Schema:
 
 - Percebi que os nomes das migrations tanto `categories` quanto `documents` estavam diferentes das migrations existentes no projeto;
 - Alterei o script `sqlite-schema.sql` para inserir os nomes corretos das migrations das tabelas `categories` e `documents` com os valores: `2023_03_28_172350_create_categories_table` e `2023_03_28_172401_create_documents_table` respectivamente.
+
+Seeder:
+
+- Com objetivo de manter os dados da tabela `categories` coerentes, alterei o arquivo seeder de categories `CategorySeeder` para adicionar as datas de criação e atualização aos registros;
+- Alterei o método `run` do arquivo `DatabaseSeeder` para `$this->call([ CategorySeeder::class, ]);` para que quando for passado o parâmetro --seed na migrate, seja executado o arquivo `DatabaseSeeder`.
+
+Melhoria arquivos de Migrations e Schema:
+
+- Alterações em `2023_03_28_172350_create_categories_table`:
+- Alterei o campo id para increments (unsigned integer);
+- Alterei a ordem da criação dos campos, deixando o created_at e updated_at por último;
+- Alterei a ordem dos campos no arquivo schema na criacao da tabela `documents` para ficar na mesma ordem que no arquivo de migration.
+
+Execução do comando de Migration com Seed
+
+```
+php artisan migrate:fresh --seed
+```
