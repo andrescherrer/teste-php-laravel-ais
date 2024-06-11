@@ -13,6 +13,19 @@
 
 Crítica das Migrations e Seeders: Aponte problemas, se houver, e solucione; Implemente melhorias;
 
-- Ao executar o comando de migrate, foi criado o arquivo:  `database/db.sqlite` (indicado no .env);
+- Ao executar o comando de migrate, foi criado o arquivo:  `database/db.sqlite` (indicado no `.env`);
 - Na sequência, o banco foi criado a partir de `database/schema/sqlite-schema.sql`;
 - Tive como resposta, uma falha na migration `2023_03_28_172350_create_categories_table`, indicando que a tabela `categories` já existe;
+
+### Análise e Solução:
+
+- Comparei a linha que cria a tabela `categories` no arquivo `sqlite-schema.sql` com a migration `2023_03_28_172350_create_categories_table` e constatei que as saídas dos 2 são diferentes:
+1. No (schema) os campos são criados nesta ordem: `id, name, created_at, updated_at`;
+1. Já na (migration), nesta ordem: `id, created_at, updated_at, name`;
+- Além disso, percebi que a tabela `migrations` os registros referentes à criação da tabela `categories` e `documents` estavam com nomes direfentes de `2023_03_28_172350_create_categories_table` e `2023_03_28_172401_create_documents_table` respectivamente;
+
+- Removi os registros da tabela `migrations` referentes às migrations de criação da `categories` e `documents`
+- Comando SQL: `DELETE from migrations where id in (5,6);`;
+- Removi as tabelas `documents` e `categories` nesta ordem;
+- Comando SQL remoção `documents`: `DROP  table documents;`;
+- Comando SQL remoção `categories`: `DROP  table categories;`;
