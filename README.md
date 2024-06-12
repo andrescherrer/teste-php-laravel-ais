@@ -88,3 +88,15 @@ Execução do comando de Migration com Seed
 ```
 php artisan migrate:fresh --seed
 ```
+
+### Segunda Tarefa:
+
+Crie a estrutura completa de uma tela que permita adicionar a importação do arquivo `storage/data/2023-03-28.json`, para a tabela `documents`. onde cada registro representado neste arquivo seja adicionado a uma fila para importação.
+
+Feito isso crie uma tela com um botão simples que dispara o processamento desta fila.
+
+Utilize os padrões que preferir para as tarefas.
+
+### Solução:
+
+Foi criada uma classe ImportJsonFile responsável por fazer a leitura do(s) arquivo(s) JSON e fazer o dispatch para um job (SendDocumentJob) utlizando uma fila através do redis.
