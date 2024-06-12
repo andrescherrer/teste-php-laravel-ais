@@ -13,7 +13,7 @@ class Document extends Model
     protected $fillable = [
         'category_id',
         'title',
-        'content',
+        'contents',
     ];
 
     public function category(): BelongsTo
