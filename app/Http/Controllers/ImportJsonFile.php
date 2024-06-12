@@ -23,11 +23,11 @@ class ImportJsonFile extends Controller
             
             $category = Category::where('name', $value['categoria'])->first();
             
-            $documento['category_id'] = $category->id;
-            $documento['title'] = $value['titulo'];
-            $documento['contents'] = $value['conteúdo'];
+            $documentArr['category_id'] = $category->id;
+            $documentArr['title'] = $value['titulo'];
+            $documentArr['contents'] = $value['conteúdo'];
 
-            SendDocumentJob::dispatch($documento);
+            SendDocumentJob::dispatch($documentArr);
         });
     }
 
