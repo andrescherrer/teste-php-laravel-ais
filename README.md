@@ -101,3 +101,11 @@ Utilize os padrões que preferir para as tarefas.
 
 Foi criada uma classe ImportJsonFile(Controller) responsável por fazer a leitura do arquivo JSON outra classe SentDocumentQueue (Controller) para fazer o envio dos dados à fila através do Job SendDocumentJob além de outros arquivos blades para renderização das views.
 
+## Terceira Tarefa:
+
+Crie um test unitário que valide o tamanho máximo do campo conteúdo.
+
+Crie um test unitário que valide a seguinte regra:
+
+Se a categoria for "Remessa" o título do registro deve conter a palavra "semestre", caso contrário deve emitir um erro de registro inválido.
+Se a caterogia for "Remessa Parcial", o titulo deve conter o nome de um mês(Janeiro, Fevereiro, etc), caso contrário deve emitir um erro de registro inválido.
