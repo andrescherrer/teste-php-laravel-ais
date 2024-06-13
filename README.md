@@ -99,4 +99,5 @@ Utilize os padrões que preferir para as tarefas.
 
 ### Solução:
 
-Foi criada uma classe ImportJsonFile responsável por fazer a leitura do(s) arquivo(s) JSON e fazer o dispatch para um job (SendDocumentJob) utlizando uma fila através do redis.
+Foi criada uma classe ImportJsonFile(Controller) responsável por fazer a leitura do arquivo JSON outra classe SentDocumentQueue (Controller) para fazer o envio dos dados à fila através do Job SendDocumentJob além de outros arquivos blades para renderização das views.
+
