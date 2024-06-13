@@ -11,24 +11,20 @@ use Illuminate\Support\Facades\File;
 
 class ImportJsonFile extends Controller
 {
-    private string $find_string = "/import/";
-
     public function __invoke(Request $request)
     {
-        $filename = Str::after($request->getRequestUri(), $this->find_string);
+        $request->validate([
+            'filename' => 'required|date_format:Y-m-d'
+        ]);
+
+
+        $filename = $request->filename;
 
         $arrayfile = $this->openJsonFile($filename);
+        
+        session(['file' => $arrayfile]);        
 
-        Arr::map($arrayfile['documentos'], function($value) {
-            
-            $category = Category::where('name', $value['categoria'])->first();
-            
-            $documentArr['category_id'] = $category->id;
-            $documentArr['title'] = $value['titulo'];
-            $documentArr['contents'] = $value['conteúdo'];
-
-            SendDocumentJob::dispatch($documentArr);
-        });
+        return redirect('document/confirm');
     }
 
     private function openJsonFile($filename): Array
