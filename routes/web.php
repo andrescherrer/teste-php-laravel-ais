@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImportJsonFile;
+use App\Http\Controllers\SendDocumentQueue;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('import/{data}', ImportJsonFile::class);
+Route::prefix('document')->group(function () {
+    Route::get('/', function () { return view('document.index'); });
+    Route::get('/confirm', function () { return view('document.start-queue'); });
+    Route::post('/import', ImportJsonFile::class)->name('document.import');
+    Route::get('/send', SendDocumentQueue::class)->name('document.send');
+    Route::get('/sent', function () { return view('document.sent'); });
+});
