@@ -109,3 +109,7 @@ Crie um test unitário que valide a seguinte regra:
 
 Se a categoria for "Remessa" o título do registro deve conter a palavra "semestre", caso contrário deve emitir um erro de registro inválido.
 Se a caterogia for "Remessa Parcial", o titulo deve conter o nome de um mês(Janeiro, Fevereiro, etc), caso contrário deve emitir um erro de registro inválido.
+
+### Solução
+
+Foi adicionada uma classe de Teste (DocumentUnitTest) para valiar os itens desta tarefa.
