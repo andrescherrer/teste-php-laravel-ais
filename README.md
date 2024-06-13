@@ -1,6 +1,8 @@
 
 # Desafio Técnico PHP/Laravel
 
+O teste foi desenvolvido em uma estrura de containers (Sail) do próprio Laravel.
+
 ## Configuração inicial do projeto
 
 - Clone do projeto:
